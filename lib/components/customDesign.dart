@@ -1,21 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class customDesign extends StatefulWidget {
-  customDesign(
-      {required this.image,
-      required this.texxt,
-      this.cat,
-      required this.Dprice,
-      required this.Oprice,
-      required this.rate});
+import 'listData.dart';
 
-  String texxt;
-  String image;
-  String rate;
-  String Oprice;
-  String Dprice;
-  String? cat;
+class customDesign extends StatefulWidget {
+  customDesign({required this.index});
+
+  int index;
 
   @override
   State<customDesign> createState() => _customDesignState();
@@ -54,7 +45,7 @@ class _customDesignState extends State<customDesign> {
                         Row(
                           children: [
                             Text(
-                              widget.texxt,
+                              basicModel.DataList[widget.index]["texxt"]!,
                               style: TextStyle(
                                   fontSize: 19, fontWeight: FontWeight.bold),
                             ),
@@ -79,21 +70,23 @@ class _customDesignState extends State<customDesign> {
                           ],
                         ),
                         Text(
-                          "from L.E." + widget.Oprice,
+                          "from L.E." +
+                              basicModel.DataList[widget.index]["Oprice"]!,
                           style: TextStyle(
                               color: Colors.grey,
                               fontSize: 17,
                               decoration: TextDecoration.lineThrough),
                         ),
                         Text(
-                          "from L.E." + widget.Dprice,
+                          "from L.E." +
+                              basicModel.DataList[widget.index]["Dprice"]!,
                           style: TextStyle(
                               color: Colors.grey[900],
                               fontSize: 17,
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
-                          widget.cat!,
+                          basicModel.DataList[widget.index]["cat"]!,
                           style: TextStyle(fontStyle: FontStyle.italic),
                         ),
                         SizedBox(
@@ -102,7 +95,7 @@ class _customDesignState extends State<customDesign> {
                         Row(
                           children: [
                             Text(
-                              widget.rate,
+                              basicModel.DataList[widget.index]["rate"]!,
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w400),
                             ),
@@ -188,8 +181,11 @@ class _customDesignState extends State<customDesign> {
             Positioned(
               top: -27,
               left: 10,
-              child: Image.asset(
-                widget.image,
+              child: Hero(
+                tag: widget.index,
+                child: Image.asset(
+                  basicModel.DataList[widget.index]["image"]!,
+                ),
               ),
             ),
           ],

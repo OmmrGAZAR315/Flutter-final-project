@@ -1,21 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class favComponent extends StatefulWidget {
-  favComponent(
-      {required this.image,
-      required this.texxt,
-      this.cat,
-      required this.Dprice,
-      required this.Oprice,
-      required this.rate});
+import 'listData.dart';
 
-  String texxt;
-  String image;
-  String rate;
-  String Oprice;
-  String Dprice;
-  String? cat;
+class favComponent extends StatefulWidget {
+  favComponent({required this.index});
+
+  int index;
 
   @override
   State<favComponent> createState() => _favComponent();
@@ -54,7 +45,7 @@ class _favComponent extends State<favComponent> {
                         Row(
                           children: [
                             Text(
-                              widget.texxt,
+                              basicModel.favReversed[widget.index]["texxt"]!,
                               style: TextStyle(
                                   fontSize: 19, fontWeight: FontWeight.bold),
                             ),
@@ -72,28 +63,30 @@ class _favComponent extends State<favComponent> {
                                     });
                                   },
                                   child: Icon(
-                                    fav ? Icons.favorite : CupertinoIcons.heart,
+                                    fav ?  CupertinoIcons.heart:Icons.favorite,
                                     color: Colors.red,
                                   )),
                             )
                           ],
                         ),
                         Text(
-                          "from L.E." + widget.Oprice,
+                          "from L.E." +
+                              basicModel.favReversed[widget.index]["Oprice"]!,
                           style: TextStyle(
                               color: Colors.grey,
                               fontSize: 17,
                               decoration: TextDecoration.lineThrough),
                         ),
                         Text(
-                          "from L.E." + widget.Dprice,
+                          "from L.E." +
+                              basicModel.favReversed[widget.index]["Dprice"]!,
                           style: TextStyle(
                               color: Colors.grey[900],
                               fontSize: 17,
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
-                          widget.cat!,
+                          basicModel.favReversed[widget.index]["cat"]!,
                           style: TextStyle(fontStyle: FontStyle.italic),
                         ),
                         SizedBox(
@@ -102,7 +95,7 @@ class _favComponent extends State<favComponent> {
                         Row(
                           children: [
                             Text(
-                              widget.rate,
+                              basicModel.favReversed[widget.index]["rate"]!,
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w400),
                             ),
@@ -118,7 +111,7 @@ class _favComponent extends State<favComponent> {
               top: -27,
               left: 10,
               child: Image.asset(
-                widget.image,
+                basicModel.favReversed[widget.index]["image"]!,
               ),
             ),
           ],

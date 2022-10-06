@@ -18,7 +18,7 @@ class _searchState extends State<search> {
     super.initState();
     controller.addListener(() {
       setState(() {
-        closeTopContainer = controller.offset > 50;
+        closeTopContainer = controller.offset > 0;
       });
     });
   }

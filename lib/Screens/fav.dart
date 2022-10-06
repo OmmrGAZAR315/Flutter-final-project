@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:graduationproject/components/favComponent.dart';
 import 'package:graduationproject/components/listData.dart';
 
 class fav extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,13 +28,13 @@ class fav extends StatelessWidget {
           Expanded(
               child: GridView.builder(
             physics: BouncingScrollPhysics(),
-            itemCount: list.lsito.length,
+            itemCount: basicModel.DataList.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 0.6,
             ),
             itemBuilder: (context, index) {
-              return list.favReversed[index];
+              return favComponent(index:index);
             },
           )),
         ],
